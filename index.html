@@ -16,6 +16,8 @@
             --color-texto: #2C1810;
             --color-acento: #A67F78;
             --color-blanco: #FFFFFF;
+            --color-verde-menta: #A3D9B1;
+            --color-azul-tropical: #6EC6E6;
             --sombra-suave: 0 8px 32px rgba(90, 70, 60, 0.08);
             --sombra-media: 0 12px 48px rgba(90, 70, 60, 0.12);
             --transicion: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
@@ -294,6 +296,177 @@
             z-index: 1;
         }
         
+        /* SECCIÓN DE MENÚ DE TRAGOS */
+        .menu-section {
+            background: var(--color-blanco);
+            border-radius: 24px;
+            padding: 60px;
+            margin-bottom: 80px;
+            box-shadow: var(--sombra-media);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 180, 131, 0.2);
+        }
+        
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-dorado), var(--color-marron-oscuro), var(--color-dorado));
+        }
+        
+        .menu-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--color-marron-oscuro);
+            margin-bottom: 60px;
+            position: relative;
+            font-weight: 400;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .menu-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-dorado), transparent);
+        }
+        
+        /* Categorías del menú */
+        .menu-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+        
+        .category {
+            position: relative;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(212, 180, 131, 0.3);
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-crema);
+            border-radius: 50%;
+            border: 2px solid var(--color-dorado);
+        }
+        
+        .category-title {
+            font-size: 2rem;
+            color: var(--color-marron-oscuro);
+            font-weight: 500;
+            flex-grow: 1;
+        }
+        
+        /* Items del menú */
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background: var(--color-crema);
+            border-radius: 16px;
+            padding: 25px;
+            transition: var(--transicion);
+            border: 1px solid rgba(212, 180, 131, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-suave);
+            border-color: var(--color-dorado);
+        }
+        
+        .drink-name {
+            font-size: 1.5rem;
+            color: var(--color-marron-oscuro);
+            margin-bottom: 10px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .drink-name::before {
+            content: '•';
+            color: var(--color-dorado);
+            font-size: 1.8rem;
+        }
+        
+        .drink-description {
+            font-size: 1rem;
+            color: var(--color-marron-suave);
+            line-height: 1.6;
+            font-style: italic;
+        }
+        
+        /* Separador elegante */
+        .menu-divider {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .menu-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 180, 131, 0.5), transparent);
+        }
+        
+        .divider-icon {
+            background: var(--color-blanco);
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+            font-size: 1.5rem;
+            color: var(--color-dorado);
+        }
+        
+        /* Estilos específicos para categorías */
+        .category.clasicos .category-icon {
+            color: #8B4513;
+        }
+        
+        .category.modernos .category-icon {
+            color: #4169E1;
+        }
+        
+        .category.tropicales .category-icon {
+            color: #32CD32;
+        }
+        
+        .category.sin-alcohol .category-icon {
+            color: #9370DB;
+        }
+        
         /* Sección de contacto elegante */
         .contact-section {
             background: linear-gradient(135deg, rgba(141, 110, 99, 0.05) 0%, rgba(212, 180, 131, 0.05) 100%);
@@ -449,6 +622,12 @@
         }
         
         /* Responsividad */
+        @media (max-width: 992px) {
+            .menu-items {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 0 20px;
@@ -468,11 +647,25 @@
                 padding: 0 15px;
             }
             
-            .description-card {
+            .description-card, .menu-section {
                 padding: 30px 20px;
             }
             
-            .services-grid {
+            .menu-title {
+                font-size: 2.2rem;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .category-title {
+                font-size: 1.8rem;
+            }
+            
+            .services-grid, .menu-items {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
@@ -573,6 +766,153 @@
                 </div>
             </div>
             
+            <!-- SECCIÓN DEL MENÚ DE TRAGOS -->
+            <div class="menu-section glow-effect">
+                <h2 class="menu-title" id="menu-title">Nuestra Carta de Tragos</h2>
+                
+                <div class="menu-categories">
+                    <!-- Tragos Clásicos -->
+                    <div class="category clasicos">
+                        <div class="category-header">
+                            <div class="category-icon">🍹</div>
+                            <h3 class="category-title" id="category-1-title">Tragos Clásicos</h3>
+                        </div>
+                        
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-1-1-name">Margarita</h4>
+                                <p class="drink-description" id="drink-1-1-desc">Tequila, jugo de limón fresco y licor de naranja. Refrescante, balanceada y servida con el borde de sal.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-1-2-name">Mojito</h4>
+                                <p class="drink-description" id="drink-1-2-desc">Ron blanco, hierbabuena, limón, azúcar y soda. Ligero y muy refrescante.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-1-3-name">Piña Colada</h4>
+                                <p class="drink-description" id="drink-1-3-desc">Ron, crema de coco y jugo de piña. Dulce, tropical y cremosa.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-1-4-name">Daiquiri</h4>
+                                <p class="drink-description" id="drink-1-4-desc">Ron blanco, limón y azúcar. Simple, elegante y bien frío.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-1-5-name">Cuba Libre</h4>
+                                <p class="drink-description" id="drink-1-5-desc">Ron, cola y limón. Un clásico suave y fácil de disfrutar.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Separador elegante -->
+                    <div class="menu-divider">
+                        <span class="divider-icon">✨</span>
+                    </div>
+                    
+                    <!-- Tragos Modernos -->
+                    <div class="category modernos">
+                        <div class="category-header">
+                            <div class="category-icon">🍸</div>
+                            <h3 class="category-title" id="category-2-title">Tragos Modernos</h3>
+                        </div>
+                        
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-2-1-name">Gin Tonic</h4>
+                                <p class="drink-description" id="drink-2-1-desc">Gin premium con tónica y toques cítricos o frutales. Fresco y aromático.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-2-2-name">Moscow Mule</h4>
+                                <p class="drink-description" id="drink-2-2-desc">Vodka, ginger beer y limón. Refrescante con un toque picante.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-2-3-name">Aperol Spritz</h4>
+                                <p class="drink-description" id="drink-2-3-desc">Aperol, prosecco y soda. Ligero, burbujeante y elegante.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-2-4-name">Paloma</h4>
+                                <p class="drink-description" id="drink-2-4-desc">Tequila con toronja y limón. Refrescante y con un toque amargo.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-2-5-name">Negroni</h4>
+                                <p class="drink-description" id="drink-2-5-desc">Gin, vermut rojo y Campari. Intenso y sofisticado.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Separador elegante -->
+                    <div class="menu-divider">
+                        <span class="divider-icon">🌊</span>
+                    </div>
+                    
+                    <!-- Tragos Tropicales -->
+                    <div class="category tropicales">
+                        <div class="category-header">
+                            <div class="category-icon">🏖️</div>
+                            <h3 class="category-title" id="category-3-title">Tragos Tropicales / Playa</h3>
+                        </div>
+                        
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-3-1-name">Mai Tai</h4>
+                                <p class="drink-description" id="drink-3-1-desc">Ron, limón y sabores tropicales. Fuerte y exótico.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-3-2-name">Blue Lagoon</h4>
+                                <p class="drink-description" id="drink-3-2-desc">Vodka, curaçao azul y limón. Dulce, llamativo y refrescante.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-3-3-name">Sex on the Beach</h4>
+                                <p class="drink-description" id="drink-3-3-desc">Vodka, durazno, arándano y naranja. Suave y frutal.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-3-4-name">Rum Punch</h4>
+                                <p class="drink-description" id="drink-3-4-desc">Mezcla de rones y jugos tropicales. Dulce y potente.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Separador elegante -->
+                    <div class="menu-divider">
+                        <span class="divider-icon">💫</span>
+                    </div>
+                    
+                    <!-- Sin Alcohol -->
+                    <div class="category sin-alcohol">
+                        <div class="category-header">
+                            <div class="category-icon">🍓</div>
+                            <h3 class="category-title" id="category-4-title">Sin Alcohol</h3>
+                        </div>
+                        
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-4-1-name">Mojito Virgin</h4>
+                                <p class="drink-description" id="drink-4-1-desc">Hierbabuena, limón, azúcar y soda. Refrescante sin alcohol.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-4-2-name">Piña Colada Virgin</h4>
+                                <p class="drink-description" id="drink-4-2-desc">Piña y crema de coco. Dulce y tropical.</p>
+                            </div>
+                            
+                            <div class="menu-item">
+                                <h4 class="drink-name" id="drink-4-3-name">Limonada Natural</h4>
+                                <p class="drink-description" id="drink-4-3-desc">Limón fresco y azúcar. Clásica y refrescante.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Sección de contacto elegante -->
             <div class="contact-section glow-effect">
                 <h2 class="contact-title" id="contact-title">Contáctanos</h2>
@@ -623,6 +963,56 @@
             service2Desc: "Barra móvil profesional para eventos de empresa, lanzamientos de productos y reuniones corporativas.",
             service3Title: "Fiestas al Aire Libre",
             service3Desc: "Servicio de bartender para celebraciones en la playa, jardines y cualquier espacio al aire libre.",
+            
+            // Menú en español
+            menuTitle: "Nuestra Carta de Tragos",
+            category1Title: "Tragos Clásicos",
+            category2Title: "Tragos Modernos",
+            category3Title: "Tragos Tropicales / Playa",
+            category4Title: "Sin Alcohol",
+            
+            // Tragos Clásicos
+            drink111Name: "Margarita",
+            drink111Desc: "Tequila, jugo de limón fresco y licor de naranja. Refrescante, balanceada y servida con el borde de sal.",
+            drink112Name: "Mojito",
+            drink112Desc: "Ron blanco, hierbabuena, limón, azúcar y soda. Ligero y muy refrescante.",
+            drink113Name: "Piña Colada",
+            drink113Desc: "Ron, crema de coco y jugo de piña. Dulce, tropical y cremosa.",
+            drink114Name: "Daiquiri",
+            drink114Desc: "Ron blanco, limón y azúcar. Simple, elegante y bien frío.",
+            drink115Name: "Cuba Libre",
+            drink115Desc: "Ron, cola y limón. Un clásico suave y fácil de disfrutar.",
+            
+            // Tragos Modernos
+            drink121Name: "Gin Tonic",
+            drink121Desc: "Gin premium con tónica y toques cítricos o frutales. Fresco y aromático.",
+            drink122Name: "Moscow Mule",
+            drink122Desc: "Vodka, ginger beer y limón. Refrescante con un toque picante.",
+            drink123Name: "Aperol Spritz",
+            drink123Desc: "Aperol, prosecco y soda. Ligero, burbujeante y elegante.",
+            drink124Name: "Paloma",
+            drink124Desc: "Tequila con toronja y limón. Refrescante y con un toque amargo.",
+            drink125Name: "Negroni",
+            drink125Desc: "Gin, vermut rojo y Campari. Intenso y sofisticado.",
+            
+            // Tragos Tropicales
+            drink131Name: "Mai Tai",
+            drink131Desc: "Ron, limón y sabores tropicales. Fuerte y exótico.",
+            drink132Name: "Blue Lagoon",
+            drink132Desc: "Vodka, curaçao azul y limón. Dulce, llamativo y refrescante.",
+            drink133Name: "Sex on the Beach",
+            drink133Desc: "Vodka, durazno, arándano y naranja. Suave y frutal.",
+            drink134Name: "Rum Punch",
+            drink134Desc: "Mezcla de rones y jugos tropicales. Dulce y potente.",
+            
+            // Sin Alcohol
+            drink141Name: "Mojito Virgin",
+            drink141Desc: "Hierbabuena, limón, azúcar y soda. Refrescante sin alcohol.",
+            drink142Name: "Piña Colada Virgin",
+            drink142Desc: "Piña y crema de coco. Dulce y tropical.",
+            drink143Name: "Limonada Natural",
+            drink143Desc: "Limón fresco y azúcar. Clásica y refrescante.",
+            
             contactTitle: "Contáctanos",
             emailLabel: "Email:",
             footerText: "© 2023 After Hours LLC - Luxury Mobile Bar. Todos los derechos reservados."
@@ -641,6 +1031,56 @@
             service2Desc: "Professional mobile bar for company events, product launches, and corporate meetings.",
             service3Title: "Outdoor Parties",
             service3Desc: "Bartender service for beach celebrations, gardens, and any outdoor space.",
+            
+            // Menú en inglés
+            menuTitle: "Our Cocktail Menu",
+            category1Title: "Classic Cocktails",
+            category2Title: "Modern Cocktails",
+            category3Title: "Tropical / Beach Drinks",
+            category4Title: "Non-Alcoholic",
+            
+            // Classic Cocktails
+            drink111Name: "Margarita",
+            drink111Desc: "Tequila, fresh lime juice, and orange liqueur. Refreshing, balanced, and served with a salted rim.",
+            drink112Name: "Mojito",
+            drink112Desc: "White rum, mint, lime, sugar, and soda. Light and very refreshing.",
+            drink113Name: "Piña Colada",
+            drink113Desc: "Rum, coconut cream, and pineapple juice. Sweet, tropical, and creamy.",
+            drink114Name: "Daiquiri",
+            drink114Desc: "White rum, lime, and sugar. Simple, elegant, and well-chilled.",
+            drink115Name: "Cuba Libre",
+            drink115Desc: "Rum, cola, and lime. A smooth classic that's easy to enjoy.",
+            
+            // Modern Cocktails
+            drink121Name: "Gin Tonic",
+            drink121Desc: "Premium gin with tonic and citrus or fruity notes. Fresh and aromatic.",
+            drink122Name: "Moscow Mule",
+            drink122Desc: "Vodka, ginger beer, and lime. Refreshing with a spicy touch.",
+            drink123Name: "Aperol Spritz",
+            drink123Desc: "Aperol, prosecco, and soda. Light, bubbly, and elegant.",
+            drink124Name: "Paloma",
+            drink124Desc: "Tequila with grapefruit and lime. Refreshing with a bitter touch.",
+            drink125Name: "Negroni",
+            drink125Desc: "Gin, red vermouth, and Campari. Intense and sophisticated.",
+            
+            // Tropical Drinks
+            drink131Name: "Mai Tai",
+            drink131Desc: "Rum, lime, and tropical flavors. Strong and exotic.",
+            drink132Name: "Blue Lagoon",
+            drink132Desc: "Vodka, blue curaçao, and lemon. Sweet, eye-catching, and refreshing.",
+            drink133Name: "Sex on the Beach",
+            drink133Desc: "Vodka, peach, cranberry, and orange. Smooth and fruity.",
+            drink134Name: "Rum Punch",
+            drink134Desc: "Blend of rums and tropical juices. Sweet and potent.",
+            
+            // Non-Alcoholic
+            drink141Name: "Virgin Mojito",
+            drink141Desc: "Mint, lime, sugar, and soda. Refreshing without alcohol.",
+            drink142Name: "Virgin Piña Colada",
+            drink142Desc: "Pineapple and coconut cream. Sweet and tropical.",
+            drink143Name: "Natural Lemonade",
+            drink143Desc: "Fresh lemon and sugar. Classic and refreshing.",
+            
             contactTitle: "Contact Us",
             emailLabel: "Email:",
             footerText: "© 2023 After Hours LLC - Luxury Mobile Bar. All rights reserved."
@@ -658,62 +1098,112 @@
         const service2Desc = document.getElementById('service-2-desc');
         const service3Title = document.getElementById('service-3-title');
         const service3Desc = document.getElementById('service-3-desc');
+        const menuTitle = document.getElementById('menu-title');
+        const category1Title = document.getElementById('category-1-title');
+        const category2Title = document.getElementById('category-2-title');
+        const category3Title = document.getElementById('category-3-title');
+        const category4Title = document.getElementById('category-4-title');
         const contactTitle = document.getElementById('contact-title');
         const emailLabel = document.getElementById('email-label');
         const footerText = document.getElementById('footer-text');
         
         // Función para cambiar el idioma
         function changeLanguage(language) {
-            // Aplicar animación de desvanecimiento
-            const elementsToChange = [
-                servicesTitle, mainTagline, description, 
-                service1Title, service1Desc, 
-                service2Title, service2Desc, 
-                service3Title, service3Desc,
-                contactTitle, emailLabel, footerText
+            const content = language === 'es' ? spanishContent : englishContent;
+            
+            // Elementos principales
+            const elements = [
+                { el: servicesTitle, content: content.servicesTitle },
+                { el: mainTagline, content: content.mainTagline },
+                { el: description, content: content.description },
+                { el: service1Title, content: content.service1Title },
+                { el: service1Desc, content: content.service1Desc },
+                { el: service2Title, content: content.service2Title },
+                { el: service2Desc, content: content.service2Desc },
+                { el: service3Title, content: content.service3Title },
+                { el: service3Desc, content: content.service3Desc },
+                { el: menuTitle, content: content.menuTitle },
+                { el: category1Title, content: content.category1Title },
+                { el: category2Title, content: content.category2Title },
+                { el: category3Title, content: content.category3Title },
+                { el: category4Title, content: content.category4Title },
+                { el: contactTitle, content: content.contactTitle },
+                { el: emailLabel, content: content.emailLabel },
+                { el: footerText, content: content.footerText }
             ];
             
-            elementsToChange.forEach(el => {
-                if (el) {
-                    el.classList.add('fade-out');
-                    setTimeout(() => el.classList.remove('fade-out'), 300);
+            // Aplicar animación y actualizar contenido
+            elements.forEach(item => {
+                if (item.el) {
+                    item.el.classList.add('fade-out');
+                    setTimeout(() => {
+                        if (item.el.id === 'description') {
+                            item.el.innerHTML = item.content;
+                        } else {
+                            item.el.textContent = item.content;
+                        }
+                        item.el.classList.remove('fade-out');
+                        item.el.classList.add('fade-in');
+                        setTimeout(() => item.el.classList.remove('fade-in'), 300);
+                    }, 150);
                 }
             });
             
-            // Cambiar contenido después de un breve delay
-            setTimeout(() => {
-                const content = language === 'es' ? spanishContent : englishContent;
-                
-                if (servicesTitle) servicesTitle.textContent = content.servicesTitle;
-                if (mainTagline) mainTagline.textContent = content.mainTagline;
-                if (description) description.innerHTML = content.description;
-                if (service1Title) service1Title.textContent = content.service1Title;
-                if (service1Desc) service1Desc.textContent = content.service1Desc;
-                if (service2Title) service2Title.textContent = content.service2Title;
-                if (service2Desc) service2Desc.textContent = content.service2Desc;
-                if (service3Title) service3Title.textContent = content.service3Title;
-                if (service3Desc) service3Desc.textContent = content.service3Desc;
-                if (contactTitle) contactTitle.textContent = content.contactTitle;
-                if (emailLabel) emailLabel.textContent = content.emailLabel;
-                if (footerText) footerText.textContent = content.footerText;
-                
-                // Actualizar botones de idioma
-                if (language === 'es') {
-                    spanishBtn.classList.add('active');
-                    englishBtn.classList.remove('active');
-                } else {
-                    englishBtn.classList.add('active');
-                    spanishBtn.classList.remove('active');
+            // Actualizar botones de idioma
+            if (language === 'es') {
+                spanishBtn.classList.add('active');
+                englishBtn.classList.remove('active');
+            } else {
+                englishBtn.classList.add('active');
+                spanishBtn.classList.remove('active');
+            }
+            
+            // Actualizar todos los tragos del menú
+            updateMenuContent(language);
+        }
+        
+        // Función para actualizar el contenido del menú
+        function updateMenuContent(language) {
+            const content = language === 'es' ? spanishContent : englishContent;
+            
+            // Actualizar cada trago individualmente
+            for (let i = 1; i <= 5; i++) {
+                // Tragos Clásicos
+                const drink1 = document.getElementById(`drink-1-${i}-name`);
+                const desc1 = document.getElementById(`drink-1-${i}-desc`);
+                if (drink1 && desc1) {
+                    drink1.textContent = content[`drink11${i}Name`];
+                    desc1.textContent = content[`drink11${i}Desc`];
                 }
                 
-                // Aplicar animación de entrada
-                elementsToChange.forEach(el => {
-                    if (el) {
-                        el.classList.add('fade-in');
-                        setTimeout(() => el.classList.remove('fade-in'), 300);
-                    }
-                });
-            }, 150);
+                // Tragos Modernos
+                const drink2 = document.getElementById(`drink-2-${i}-name`);
+                const desc2 = document.getElementById(`drink-2-${i}-desc`);
+                if (drink2 && desc2) {
+                    drink2.textContent = content[`drink12${i}Name`];
+                    desc2.textContent = content[`drink12${i}Desc`];
+                }
+            }
+            
+            // Tragos Tropicales (4 items)
+            for (let i = 1; i <= 4; i++) {
+                const drink3 = document.getElementById(`drink-3-${i}-name`);
+                const desc3 = document.getElementById(`drink-3-${i}-desc`);
+                if (drink3 && desc3) {
+                    drink3.textContent = content[`drink13${i}Name`];
+                    desc3.textContent = content[`drink13${i}Desc`];
+                }
+            }
+            
+            // Sin Alcohol (3 items)
+            for (let i = 1; i <= 3; i++) {  
+                const drink4 = document.getElementById(`drink-4-${i}-name`);
+                const desc4 = document.getElementById(`drink-4-${i}-desc`);
+                if (drink4 && desc4) {
+                    drink4.textContent = content[`drink14${i}Name`];
+                    desc4.textContent = content[`drink14${i}Desc`];
+                }
+            }
         }
         
         // Event listeners para botones de idioma
