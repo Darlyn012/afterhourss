@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After Hours | Luxury Mobile Bar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de color elegantes */
+        :root {
+            --color-crema: #F7F3F0;
+            --color-marron-suave: #8A7368;
+            --color-marron-oscuro: #5D4037;
+            --color-dorado: #D4B483;
+            --color-dorado-oscuro: #B8945F;
+            --color-texto: #2C1810;
+            --color-acento: #A67F78;
+            --color-blanco: #FFFFFF;
+            --sombra-suave: 0 8px 32px rgba(90, 70, 60, 0.08);
+            --sombra-media: 0 12px 48px rgba(90, 70, 60, 0.12);
+            --transicion: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        /* Reset y estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+            background-color: var(--color-crema);
+            color: var(--color-texto);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Fondo elegante con patrón sutil */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(212, 180, 131, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(141, 110, 99, 0.03) 0%, transparent 40%);
+            z-index: -1;
+        }
+        
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+        }
+        
+        /* Selector de idioma elegante */
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            padding: 40px 0 20px;
+            gap: 15px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .language-btn {
+            background: transparent;
+            color: var(--color-marron-oscuro);
+            border: 1px solid var(--color-dorado);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transicion);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .language-btn:hover {
+            background: var(--color-dorado);
+            color: var(--color-crema);
+            transform: translateY(-2px);
+            box-shadow: var(--sombra-suave);
+        }
+        
+        .language-btn.active {
+            background: var(--color-marron-oscuro);
+            color: var(--color-crema);
+            border-color: var(--color-marron-oscuro);
+        }
+        
+        /* Encabezado elegante */
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .logo-elegante {
+            font-family: 'Cinzel', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            color: var(--color-marron-oscuro);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo-elegante::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-dorado), transparent);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--color-marron-suave);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        
+        .tagline {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--color-dorado-oscuro);
+            margin: 30px auto;
+            max-width: 600px;
+            line-height: 1.4;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .tagline::before,
+        .tagline::after {
+            content: "❝";
+            position: absolute;
+            top: -10px;
+            color: var(--color-dorado);
+            font-size: 2.5rem;
+            opacity: 0.5;
+        }
+        
+        .tagline::before {
+            left: 0;
+        }
+        
+        .tagline::after {
+            right: 0;
+            transform: rotate(180deg);
+        }
+        
+        /* Contenido principal */
+        .main-content {
+            padding: 20px 0 60px;
+        }
+        
+        /* Tarjeta de descripción elegante */
+        .description-card {
+            background: var(--color-blanco);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: var(--sombra-media);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 180, 131, 0.2);
+        }
+        
+        .description-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-dorado), var(--color-marron-oscuro), var(--color-dorado));
+        }
+        
+        .description {
+            font-size: 1.15rem;
+            color: var(--color-texto);
+            text-align: center;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        
+        .description p {
+            margin-bottom: 25px;
+        }
+        
+        /* Servicios elegantes */
+        .services-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--color-marron-oscuro);
+            margin-bottom: 50px;
+            position: relative;
+            font-weight: 400;
+        }
+        
+        .services-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--color-dorado);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        
+        .service-item {
+            background: var(--color-blanco);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--sombra-suave);
+            transition: var(--transicion);
+            border: 1px solid rgba(212, 180, 131, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--sombra-media);
+        }
+        
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(212, 180, 131, 0.03) 100%);
+            z-index: 0;
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--color-dorado);
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            transition: var(--transicion);
+        }
+        
+        .service-item:hover .service-icon {
+            transform: scale(1.1);
+        }
+        
+        .service-item h3 {
+            font-size: 1.4rem;
+            color: var(--color-marron-oscuro);
+            margin-bottom: 15px;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-item p {
+            font-size: 1rem;
+            color: var(--color-marron-suave);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Sección de contacto elegante */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(141, 110, 99, 0.05) 0%, rgba(212, 180, 131, 0.05) 100%);
+            border-radius: 24px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 180, 131, 0.15);
+            margin-bottom: 60px;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 180, 131, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .contact-title {
+            font-size: 2.2rem;
+            color: var(--color-marron-oscuro);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+        }
+        
+        .contact-info {
+            background: var(--color-blanco);
+            border-radius: 16px;
+            padding: 25px;
+            display: inline-block;
+            margin: 20px auto 40px;
+            box-shadow: var(--sombra-suave);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(212, 180, 131, 0.2);
+        }
+        
+        .email {
+            font-size: 1.2rem;
+            color: var(--color-marron-oscuro);
+        }
+        
+        .email strong {
+            color: var(--color-dorado-oscuro);
+            font-weight: 500;
+        }
+        
+        /* Redes sociales elegantes */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--color-marron-oscuro);
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 16px 24px;
+            background: var(--color-blanco);
+            border-radius: 50px;
+            transition: var(--transicion);
+            box-shadow: var(--sombra-suave);
+            border: 1px solid rgba(212, 180, 131, 0.2);
+        }
+        
+        .social-link:hover {
+            background: var(--color-marron-oscuro);
+            color: var(--color-crema);
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-media);
+        }
+        
+        .social-link:hover .social-icon {
+            color: var(--color-dorado);
+        }
+        
+        .social-icon {
+            font-size: 1.3rem;
+            color: var(--color-dorado);
+            transition: var(--transicion);
+        }
+        
+        /* Pie de página elegante */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(212, 180, 131, 0.2);
+            color: var(--color-marron-suave);
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '🍸';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-crema);
+            padding: 0 20px;
+            font-size: 1.5rem;
+        }
+        
+        /* Elementos decorativos */
+        .decorative-element {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .decor-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 8rem;
+            transform: rotate(-15deg);
+        }
+        
+        .decor-2 {
+            bottom: 15%;
+            right: 5%;
+            font-size: 8rem;
+            transform: rotate(15deg);
+        }
+        
+        /* Animación para cambio de idioma */
+        .fade-out {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .logo-elegante {
+                font-size: 3.2rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 5px;
+            }
+            
+            .tagline {
+                font-size: 1.5rem;
+                padding: 0 15px;
+            }
+            
+            .description-card {
+                padding: 30px 20px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .contact-section {
+                padding: 40px 20px;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-link {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .decor-1,
+            .decor-2 {
+                display: none;
+            }
+        }
+        
+        /* Efecto de brillo sutil en elementos */
+        .glow-effect {
+            position: relative;
+        }
+        
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 30px rgba(212, 180, 131, 0.1);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Cinzel:wght@400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Elementos decorativos -->
+    <div class="decorative-element decor-1">🍾</div>
+    <div class="decorative-element decor-2">🥂</div>
+    
+    <div class="container">
+        <!-- Selector de idioma -->
+        <div class="language-selector">
+            <button id="spanish-btn" class="language-btn active">
+                <i class="fas fa-language"></i> Español
+            </button>
+            <button id="english-btn" class="language-btn">
+                <i class="fas fa-language"></i> English
+            </button>
+        </div>
+        
+        <!-- Encabezado elegante -->
+        <header>
+            <h1 class="logo-elegante">After Hours</h1>
+            <div class="subtitle">LUXURY MOBILE BAR</div>
+            <div class="tagline" id="main-tagline">Tú pones la ocasión, nosotros ponemos el bar</div>
+        </header>
+        
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <!-- Descripción elegante -->
+            <div class="description-card glow-effect">
+                <div class="description" id="description">
+                    <p>Llevamos la experiencia del bar directamente a tu evento. Nuestro servicio de bartender móvil combina estilo, sabor y profesionalismo para crear momentos únicos e inolvidables.</p>
+                    <p>Ofrecemos cócteles clásicos y de autor, preparados al momento con ingredientes frescos y de alta calidad. Nos adaptamos a cualquier ocasión: bodas, cumpleaños, eventos corporativos, fiestas privadas y celebraciones en la playa o al aire libre.</p>
+                    <p>Incluimos una barra móvil elegante, cristalería, decoración y un servicio personalizado que se ajusta al tema de tu evento. Nuestro objetivo es que tú y tus invitados disfruten sin preocuparse por nada, mientras nosotros nos encargamos de sorprenderlos con cada bebida.</p>
+                </div>
+            </div>
+            
+            <!-- Servicios elegantes -->
+            <h2 class="services-title" id="services-title">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-item glow-effect">
+                    <div class="service-icon">🎉</div>
+                    <h3 id="service-1-title">Eventos Especiales</h3>
+                    <p id="service-1-desc">Servicio de bartender para bodas, cumpleaños, aniversarios y todo tipo de celebraciones especiales.</p>
+                </div>
+                
+                <div class="service-item glow-effect">
+                    <div class="service-icon">💼</div>
+                    <h3 id="service-2-title">Eventos Corporativos</h3>
+                    <p id="service-2-desc">Barra móvil profesional para eventos de empresa, lanzamientos de productos y reuniones corporativas.</p>
+                </div>
+                
+                <div class="service-item glow-effect">
+                    <div class="service-icon">🌴</div>
+                    <h3 id="service-3-title">Fiestas al Aire Libre</h3>
+                    <p id="service-3-desc">Servicio de bartender para celebraciones en la playa, jardines y cualquier espacio al aire libre.</p>
+                </div>
+            </div>
+            
+            <!-- Sección de contacto elegante -->
+            <div class="contact-section glow-effect">
+                <h2 class="contact-title" id="contact-title">Contáctanos</h2>
+                
+                <div class="contact-info">
+                    <div class="email">
+                        <strong id="email-label">Email:</strong> AfterhoursLLC@email.com
+                    </div>
+                </div>
+                
+                <!-- Redes sociales elegantes -->
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram social-icon"></i>
+                        <span>Instagram: after.hoursllc</span>
+                    </a>
+                    
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook social-icon"></i>
+                        <span>Facebook: After Hours LLC</span>
+                    </a>
+                    
+                    <a href="#" class="social-link">
+                        <i class="fab fa-tiktok social-icon"></i>
+                        <span>TikTok: @afterhoursevents</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Pie de página elegante -->
+        <footer>
+            <p id="footer-text">© 2023 After Hours LLC - Luxury Mobile Bar. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Contenido en español
+        const spanishContent = {
+            servicesTitle: "Nuestros Servicios",
+            mainTagline: "Tú pones la ocasión, nosotros ponemos el bar",
+            description: `<p>Llevamos la experiencia del bar directamente a tu evento. Nuestro servicio de bartender móvil combina estilo, sabor y profesionalismo para crear momentos únicos e inolvidables.</p>
+                         <p>Ofrecemos cócteles clásicos y de autor, preparados al momento con ingredientes frescos y de alta calidad. Nos adaptamos a cualquier ocasión: bodas, cumpleaños, eventos corporativos, fiestas privadas y celebraciones en la playa o al aire libre.</p>
+                         <p>Incluimos una barra móvil elegante, cristalería, decoración y un servicio personalizado que se ajusta al tema de tu evento. Nuestro objetivo es que tú y tus invitados disfruten sin preocuparse por nada, mientras nosotros nos encargamos de sorprenderlos con cada bebida.</p>`,
+            service1Title: "Eventos Especiales",
+            service1Desc: "Servicio de bartender para bodas, cumpleaños, aniversarios y todo tipo de celebraciones especiales.",
+            service2Title: "Eventos Corporativos",
+            service2Desc: "Barra móvil profesional para eventos de empresa, lanzamientos de productos y reuniones corporativas.",
+            service3Title: "Fiestas al Aire Libre",
+            service3Desc: "Servicio de bartender para celebraciones en la playa, jardines y cualquier espacio al aire libre.",
+            contactTitle: "Contáctanos",
+            emailLabel: "Email:",
+            footerText: "© 2023 After Hours LLC - Luxury Mobile Bar. Todos los derechos reservados."
+        };
+        
+        // Contenido en inglés
+        const englishContent = {
+            servicesTitle: "Our Services",
+            mainTagline: "You bring the occasion, we bring the bar",
+            description: `<p>We bring the bar experience directly to your event. Our mobile bartender service combines style, flavor, and professionalism to create unique and unforgettable moments.</p>
+                         <p>We offer classic and signature cocktails, prepared on the spot with fresh, high-quality ingredients. We adapt to any occasion: weddings, birthdays, corporate events, private parties, and celebrations on the beach or outdoors.</p>
+                         <p>We include an elegant mobile bar, glassware, decoration, and personalized service that fits the theme of your event. Our goal is for you and your guests to enjoy without worrying about anything, while we take care of surprising you with each drink.</p>`,
+            service1Title: "Special Events",
+            service1Desc: "Bartender service for weddings, birthdays, anniversaries, and all types of special celebrations.",
+            service2Title: "Corporate Events",
+            service2Desc: "Professional mobile bar for company events, product launches, and corporate meetings.",
+            service3Title: "Outdoor Parties",
+            service3Desc: "Bartender service for beach celebrations, gardens, and any outdoor space.",
+            contactTitle: "Contact Us",
+            emailLabel: "Email:",
+            footerText: "© 2023 After Hours LLC - Luxury Mobile Bar. All rights reserved."
+        };
+        
+        // Elementos del DOM
+        const spanishBtn = document.getElementById('spanish-btn');
+        const englishBtn = document.getElementById('english-btn');
+        const servicesTitle = document.getElementById('services-title');
+        const mainTagline = document.getElementById('main-tagline');
+        const description = document.getElementById('description');
+        const service1Title = document.getElementById('service-1-title');
+        const service1Desc = document.getElementById('service-1-desc');
+        const service2Title = document.getElementById('service-2-title');
+        const service2Desc = document.getElementById('service-2-desc');
+        const service3Title = document.getElementById('service-3-title');
+        const service3Desc = document.getElementById('service-3-desc');
+        const contactTitle = document.getElementById('contact-title');
+        const emailLabel = document.getElementById('email-label');
+        const footerText = document.getElementById('footer-text');
+        
+        // Función para cambiar el idioma
+        function changeLanguage(language) {
+            // Aplicar animación de desvanecimiento
+            const elementsToChange = [
+                servicesTitle, mainTagline, description, 
+                service1Title, service1Desc, 
+                service2Title, service2Desc, 
+                service3Title, service3Desc,
+                contactTitle, emailLabel, footerText
+            ];
+            
+            elementsToChange.forEach(el => {
+                if (el) {
+                    el.classList.add('fade-out');
+                    setTimeout(() => el.classList.remove('fade-out'), 300);
+                }
+            });
+            
+            // Cambiar contenido después de un breve delay
+            setTimeout(() => {
+                const content = language === 'es' ? spanishContent : englishContent;
+                
+                if (servicesTitle) servicesTitle.textContent = content.servicesTitle;
+                if (mainTagline) mainTagline.textContent = content.mainTagline;
+                if (description) description.innerHTML = content.description;
+                if (service1Title) service1Title.textContent = content.service1Title;
+                if (service1Desc) service1Desc.textContent = content.service1Desc;
+                if (service2Title) service2Title.textContent = content.service2Title;
+                if (service2Desc) service2Desc.textContent = content.service2Desc;
+                if (service3Title) service3Title.textContent = content.service3Title;
+                if (service3Desc) service3Desc.textContent = content.service3Desc;
+                if (contactTitle) contactTitle.textContent = content.contactTitle;
+                if (emailLabel) emailLabel.textContent = content.emailLabel;
+                if (footerText) footerText.textContent = content.footerText;
+                
+                // Actualizar botones de idioma
+                if (language === 'es') {
+                    spanishBtn.classList.add('active');
+                    englishBtn.classList.remove('active');
+                } else {
+                    englishBtn.classList.add('active');
+                    spanishBtn.classList.remove('active');
+                }
+                
+                // Aplicar animación de entrada
+                elementsToChange.forEach(el => {
+                    if (el) {
+                        el.classList.add('fade-in');
+                        setTimeout(() => el.classList.remove('fade-in'), 300);
+                    }
+                });
+            }, 150);
+        }
+        
+        // Event listeners para botones de idioma
+        spanishBtn.addEventListener('click', () => changeLanguage('es'));
+        englishBtn.addEventListener('click', () => changeLanguage('en'));
+        
+        // Inicializar con español
+        changeLanguage('es');
+    </script>
+</body>
+</html>
